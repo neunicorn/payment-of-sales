@@ -1,0 +1,15 @@
+
+========== HISTORY PAYMENT ==========
+
+
+
+Mon Nov 23 14:41:03 2020
+======================
+trx no 1.  Bakso, jumlah:1, harga:25000
+trx no 2.  Bakso, jumlah:1, harga:25000
+trx no 3.  Bakso, jumlah:10, harga:250000
+
+Mon Nov 23 14:41:13 2020
+======================
+trx no 1.  Bakso, jumlah:1, harga:25000
+
