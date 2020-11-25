@@ -73,25 +73,25 @@ void run() {
     printf("\t4. Exit\n");
     printf("\n\tSelect: ");
 
-    char select;
+    int select;
 
-    scanf("%c", &select);
+    select = getchar();
     system("cls");
 
     switch (select) {
-        case '1' : {barang(); break;}
-        case '2' : {select = 0;
+        case 1 : {barang(); break;}
+        case 2 : {select = 0;
                     history_payment();
                     printf("Back\n");
                     system("pause");
                     system("cls");
                     goto awal; break;}
-        case '3' : {income();
+        case 3 : {income();
                     printf("\nBack\n");
                     system("pause");
                     system("cls");
                     run();break;}
-        case '4': {exit(0); break;}
+        case 4: {exit(0); break;}
         default: {goto awal;}
     }
 }
@@ -197,12 +197,13 @@ void barang() {
     lagi:;
     daftar();
     int x;
+    int y;
     int count=0;
     do{ input:;
         printf("\n\tInput Code: ");
         scanf("%d", &x);
 
-        if(x<menu_length + 1 && x!=0) {
+        if(x<menu_length + 1 && x>0) {
             for(int j=0; j<menu_length; j++) {
                 if(x==menu[j].nomor) {
                     trx[count].menu = menu[j];
@@ -216,7 +217,9 @@ void barang() {
             printf("\t%s = %d  Amount: %d\n", trx[count].menu.nama, trx[count].total, trx[count].amount);
         } else if (x == 0){
             break;
-        } else{
+        } else if(x == 99){
+            run();
+        }else{
             printf("\tCode Do Not Exist\n");
             goto input;
         }
@@ -225,6 +228,10 @@ void barang() {
     } while(x!=0);
 
     int total_trx =  getTotalTrx();
+    if(total_trx == 0){
+        system("cls");
+        goto lagi;
+    }
     printf("\n\t\t\t\tSubTotal: %d\n", total_trx);
     printf("\tMasukan uang untuk bayar: ");
     int bayar;
